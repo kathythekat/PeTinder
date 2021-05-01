@@ -1,13 +1,10 @@
 import "./App.css";
-import Dog from "./Dog";
+import Home from "./Home";
+import PetContext from "./PetContext";
 require("dotenv").config();
 
 function App() {
-  return (
-    <div className="App">
-      <Dog />
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

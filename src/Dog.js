@@ -1,73 +1,64 @@
-import { useEffect, useState } from "react";
-import getToken from "./get-token";
-import generateRandom from "./helpers";
+import DefaultDogImg from "./DefaultDogImg";
+import Buttons from "./Buttons";
 require("dotenv").config();
 
-const { default: axios } = require("axios");
-const API_URL = "https://api.petfinder.com/v2";
-
-function Dog() {
-  const [dogs, setDogs] = useState(null);
-  const [dog, setDog] = useState(null);
-
-  async function getDogs() {
-    const token = await getToken();
-    const resp = await axios.get(
-      "https://api.petfinder.com/v2/animals?type=dog&page=1",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    console.log("API call", resp.data);
-    return resp.data.animals;
-  }
-
-  useEffect(() => {
-    async function fetchDogsFromApi() {
-      const dogData = await getDogs();
-      setDogs(dogData);
-    }
-    if (!dogs) fetchDogsFromApi();
-  }, []);
-
-  console.log("DOGS ARRAY", dogs);
-
-  function getRandomDog() {
-    let randomIdx = generateRandom(dogs);
-    let newDog = dogs[randomIdx];
-    setDog(newDog);
-  }
-
-  if (!dog && dogs) getRandomDog();
-
-  console.log("WOOF!", dog);
-
-  if (!dog) {
-    return <div>Finding your new best furry friend...</div>;
-  }
-
+function Dog({ dog }) {
+  console.log(
+    dog.tags?.reduce(
+      (allCharacteristics, tag) => `${tag}, ${allCharacteristics}`,
+      ""
+    ),
+    dog.tags
+  );
+  const dogFeatures = [
+    { label: "Breed", value: dog.breeds.primary },
+    { label: "Age", value: dog.age },
+    { label: "Gender", value: dog.gender },
+    {
+      label: "Spayed/neutered ",
+      value: dog.attributes.spayed_neutered ? "yes" : "no",
+    },
+    {
+      label: "Housetrained",
+      value: dog.attributes.house_trained ? "yes" : "no",
+    },
+    {
+      label: `Current with shots`,
+      value: dog.attributes.shots_current ? "yes" : "no",
+    },
+    { label: "Status", value: dog.status },
+    {
+      label: "Characteristics",
+      value:
+        dog.tags?.reduce(
+          (allCharacteristics, tag) => `${tag} ${allCharacteristics}`,
+          ""
+        ) || "unknown",
+    },
+  ];
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col justify-center items-center w-80 my-6">
         <h2>{dog.name}</h2>
-        <img
-          className="rounded-lg h-auto"
-          alt={dog.name}
-          src={dog.photos[0]?.medium}
-        />
-        <p>Possible breed: {dog.breeds.primary}</p>
-        <p>Spayed/neutered: {dog.attributes.spayed_neutered ? "yes" : "no"} </p>
-        <p>Housetrained: {dog.attributes.house_trained ? "yes" : "no"} </p>
-        <p>
-          Current with shots: {dog.attributes.shots_current ? "yes" : "no"}{" "}
-        </p>
-        <p>Status: {dog.status} </p>
-        <a className="text-pink-500" href={dog.url}>
-          Find out more!
-        </a>
+        {dog.photos[0] ? (
+          <img
+            className="rounded-lg h-auto w-full"
+            alt={dog.name}
+            src={dog.photos[0]?.medium}
+          />
+        ) : (
+          <DefaultDogImg />
+        )}
+        <ul className="list-none self-start">
+          {dogFeatures.map(({ label, value }, i) => (
+            <li key={i}>
+              <span className="text-black text-opacity-70">{label}</span>:{" "}
+              {value}
+            </li>
+          ))}
+        </ul>
       </div>
+      <Buttons />
     </div>
   );
 }
