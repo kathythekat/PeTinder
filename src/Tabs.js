@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDog, faCat, faHome } from "@fortawesome/free-solid-svg-icons";
+import PetContext from "./PetContext";
 
-const Tabs = ({ color }) => {
+const dogIcon = <FontAwesomeIcon icon={faDog} size="2x" />;
+const catIcon = <FontAwesomeIcon icon={faCat} size="2x" />;
+const homeIcon = <FontAwesomeIcon icon={faHome} size="2x" />;
+
+const Tabs = ({ color, changeType }) => {
   const [openTab, setOpenTab] = React.useState(1);
+  const { getRandomPet } = useContext(PetContext);
+
   return (
     <>
       <div className="flex flex-wrap">
@@ -11,61 +21,63 @@ const Tabs = ({ color }) => {
             role="tablist"
           >
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
-              <a
+              <Link
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 1
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                    ? "text-white bg-" + color + "-500"
+                    : "text-" + color + "-500 bg-white")
                 }
                 onClick={(e) => {
-                  e.preventDefault();
+                  // e.preventDefault();
                   setOpenTab(1);
                 }}
                 data-toggle="tab"
-                href="#link1"
+                to="/"
                 role="tablist"
               >
-                Home
-              </a>
+                {homeIcon}
+              </Link>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
-              <a
+              <Link
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 2
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                    ? "text-white bg-" + color + "-500"
+                    : "text-" + color + "-500 bg-white")
                 }
                 onClick={(e) => {
-                  e.preventDefault();
+                  changeType("dog");
+                  getRandomPet("dog");
                   setOpenTab(2);
                 }}
                 data-toggle="tab"
-                href="#link2"
+                to="/dogs"
                 role="tablist"
               >
-                Dogs
-              </a>
+                {dogIcon}
+              </Link>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
-              <a
+              <Link
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 3
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                    ? "text-white bg-" + color + "-500"
+                    : "text-" + color + "-500 bg-white")
                 }
                 onClick={(e) => {
-                  e.preventDefault();
+                  changeType("cat");
+                  getRandomPet("cat");
                   setOpenTab(3);
                 }}
                 data-toggle="tab"
-                href="#link3"
+                to="/cats"
                 role="tablist"
               >
-                Cats
-              </a>
+                {catIcon}
+              </Link>
             </li>
           </ul>
           {/* <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
@@ -92,10 +104,10 @@ const Tabs = ({ color }) => {
   );
 };
 
-export default function TabsRender() {
+export default function TabsRender({ changeType }) {
   return (
     <>
-      <Tabs color="pink" />
+      <Tabs color="pink" changeType={changeType} />
     </>
   );
 }

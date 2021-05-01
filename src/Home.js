@@ -1,55 +1,23 @@
-import { useContext, useEffect, useState } from "react";
-import getToken from "./get-token";
-import generateRandom from "./helpers";
-import Dog from "./Dog";
-import PetContext from "./PetContext";
-require("dotenv").config();
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const { default: axios } = require("axios");
-const API_URL = "https://api.petfinder.com/v2";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+
+const pawIcon = (
+  <FontAwesomeIcon
+    icon={faPaw}
+    size="2x"
+    className="fill-current text-pink-500"
+  />
+);
 
 function Home() {
-  const [dogs, setDogs] = useState(null);
-  const [dog, setDog] = useState(null);
-
-  async function getDogs() {
-    const token = await getToken();
-    const resp = await axios.get(`${API_URL}/animals?type=dog&page=1`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log("API call", resp.data);
-    return resp.data.animals;
-  }
-
-  useEffect(() => {
-    async function fetchDogsFromApi() {
-      const dogData = await getDogs();
-      setDogs(dogData);
-    }
-    if (!dogs) fetchDogsFromApi();
-  }, []);
-
-  console.log("DOGS ARRAY", dogs);
-
-  function getRandomDog() {
-    let newDog = generateRandom(dogs);
-    setDog(newDog);
-  }
-
-  if (!dog && dogs) getRandomDog();
-
-  console.log("WOOF!", dog);
-
-  if (!dog || !dogs) {
-    return <div>Finding your new best furry friend...</div>;
-  }
-
   return (
-    <PetContext.Provider value={{ dog, getRandomDog }}>
-      <Dog dog={dog} />
-    </PetContext.Provider>
+    <div className="flex flex-col items-center justify-center">
+      <div className="m-4 lg:my-8 rounded-lg p-4">
+        <h1 className="my-2">Welcome to PeTinder! {pawIcon} </h1>
+        <p>Where every pet deserves a chance!</p>
+      </div>
+    </div>
   );
 }
 

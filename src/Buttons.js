@@ -2,12 +2,11 @@ import { useContext } from "react";
 import PetContext from "./PetContext";
 
 function Buttons() {
-  //on click, call getRandomDog, render new Dog
-  const { dog, getRandomDog } = useContext(PetContext);
+  const { pet, getRandomPet, type } = useContext(PetContext);
   return (
     <div className="flex justify-center space-x-28">
       <div className="">
-        <a href={dog.url}>
+        <a href={pet.url}>
           <button className="border border-pink-400 text-pink-400 p-2 rounded-lg hover:opacity-50">
             Find out more
           </button>
@@ -15,8 +14,8 @@ function Buttons() {
       </div>
       <div className="">
         <button
-          onClick={() => getRandomDog()}
-          className="border border-pink-400 text-pink-400 p-2 rounded-lg hover:opacity-50 focus:outline-none"
+          onClick={() => getRandomPet(type)}
+          className="bg-pink-400 text-white p-2 rounded-lg hover:opacity-50 focus:outline-none"
         >
           Show next
         </button>
