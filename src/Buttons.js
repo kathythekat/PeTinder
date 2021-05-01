@@ -5,7 +5,7 @@ function Buttons() {
   //on click, call getRandomDog, render new Dog
   const { dog, getRandomDog } = useContext(PetContext);
   return (
-    <div className="flex space-x-28">
+    <div className="flex justify-center space-x-28">
       <div className="">
         <a href={dog.url}>
           <button className="border border-pink-400 text-pink-400 p-2 rounded-lg hover:opacity-50">

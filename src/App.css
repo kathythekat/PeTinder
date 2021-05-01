@@ -13,3 +13,8 @@
     @apply text-2xl;
   }
 }
+
+body {
+  height: 100vh;
+  width: 100vw;
+}

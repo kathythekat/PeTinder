@@ -1,10 +1,16 @@
 import "./App.css";
 import Home from "./Home";
-import PetContext from "./PetContext";
+import TabsRender from "./Tabs";
+import Tabs from "./Tabs";
 require("dotenv").config();
 
 function App() {
-  return <Home />;
+  return (
+    <div className="h-screen">
+      <TabsRender />
+      <Home />
+    </div>
+  );
 }
 
 export default App;

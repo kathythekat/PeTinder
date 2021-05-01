@@ -37,29 +37,35 @@ function Dog({ dog }) {
     },
   ];
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col justify-center items-center w-80 my-6">
+    <>
+      <div className="flex flex-col items-center justify-center h-3/4">
         <h2>{dog.name}</h2>
-        {dog.photos[0] ? (
-          <img
-            className="rounded-lg h-auto w-full"
-            alt={dog.name}
-            src={dog.photos[0]?.medium}
-          />
-        ) : (
-          <DefaultDogImg />
-        )}
-        <ul className="list-none self-start">
-          {dogFeatures.map(({ label, value }, i) => (
-            <li key={i}>
-              <span className="text-black text-opacity-70">{label}</span>:{" "}
-              {value}
-            </li>
-          ))}
-        </ul>
+        <div className="flex justify-center items-center space-x-8 my-2">
+          <div>
+            {dog.photos[0] ? (
+              <img
+                className="rounded-lg h-auto w-max"
+                alt={dog.name}
+                src={dog.photos[0]?.medium}
+              />
+            ) : (
+              <DefaultDogImg />
+            )}
+          </div>
+          <div className="">
+            <ul className="list-none self-start">
+              {dogFeatures.map(({ label, value }, i) => (
+                <li key={i}>
+                  <span className="text-black text-opacity-70">{label}</span>:{" "}
+                  {value}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
       <Buttons />
-    </div>
+    </>
   );
 }
 
