@@ -24,6 +24,7 @@ function Pet() {
       label: "Spayed/neutered ",
       value: pet.attributes.spayed_neutered ? "yes" : "no",
     },
+    { label: "Size", value: pet.size },
     {
       label: "Housetrained",
       value: pet.attributes.house_trained ? "yes" : "no",

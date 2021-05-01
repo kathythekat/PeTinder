@@ -5,7 +5,7 @@ const API_URL = "https://api.petfinder.com/v2";
 
 export default async function getDogs() {
   const token = await getToken();
-  const resp = await axios.get(`${API_URL}/animals?type=dog&page=1`, {
+  const resp = await axios.get(`${API_URL}/animals?type=dog&page=3`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
