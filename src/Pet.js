@@ -51,7 +51,7 @@ function Pet() {
               <DefaultImg type={pet.type} />
             )}
           </div>
-          <div className="mt-4 mx-0">
+          <div className="mt-4">
             <ul>
               {petFeatures.map(({ label, value }, i) => (
                 <li key={i} className="break-words md:p-0.5">

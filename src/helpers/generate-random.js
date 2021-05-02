@@ -3,16 +3,8 @@ function generateRandom(arr) {
   return arr[randomIdx];
 }
 
-// function avoidDuplicates(arr) {
-//   let dog = generateRandom(arr);
-//   let alreadySeen = new Set();
-//   let i = 0;
-//   while (i < arr.length) {
-//     if (!alreadySeen.has(dog)) {
-//       alreadySeen.add(dog);
-//       console.log(alreadySeen);
-//     }
-//   }
-// }
+function generateRandomPage() {
+  return Math.floor(Math.random() * 100);
+}
 
-export default generateRandom;
+export { generateRandomPage, generateRandom };

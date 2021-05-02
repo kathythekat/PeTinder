@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import PetContext from "./PetContext";
 import getCats from "./helpers/get-cats";
 import getDogs from "./helpers/get-dogs";
-import generateRandom from "./helpers/generate-random";
+import { generateRandom } from "./helpers/generate-random";
 import LoadingSpinner from "./LoadingSpinner";
 require("dotenv").config();
 
