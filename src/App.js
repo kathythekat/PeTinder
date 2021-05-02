@@ -16,7 +16,6 @@ function App() {
   const [dogs, setDogs] = useState(null);
   const [pet, setPet] = useState(null);
 
-  // eslint-disable-next-line
   useEffect(() => {
     async function fetchCatsFromApi() {
       const petsData = await getCats();
@@ -28,6 +27,7 @@ function App() {
     }
     if (!cats) fetchCatsFromApi();
     if (!dogs) fetchDogsFromApi();
+    // eslint-disable-next-line
   }, []);
 
   console.log("CATS ARRAY", cats);
