@@ -36,17 +36,15 @@ function App() {
   console.log("TYPE", type);
 
   function getRandomPet(type) {
-    if (type === "dog") setPet(generateRandom(dogs));
-    if (type === "cat") setPet(generateRandom(cats));
-  }
-
-  if (!pet && type) {
-    getRandomPet(type);
-    return <LoadingSpinner />;
+    if (type === "dog" && dogs) setPet(generateRandom(dogs));
+    if (type === "cat" && cats) setPet(generateRandom(cats));
   }
 
   function changeType(clickedTab) {
     setType(clickedTab);
+  }
+  if (!dogs || !cats) {
+    return <LoadingSpinner />;
   }
 
   return (

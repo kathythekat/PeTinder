@@ -8,7 +8,7 @@ const dogIcon = <FontAwesomeIcon icon={faDog} size="2x" />;
 const catIcon = <FontAwesomeIcon icon={faCat} size="2x" />;
 const homeIcon = <FontAwesomeIcon icon={faHome} size="2x" />;
 
-const Tabs = ({ color, changeType }) => {
+const Tabs = ({ changeType }) => {
   const [openTab, setOpenTab] = React.useState(1);
   const { getRandomPet } = useContext(PetContext);
 
@@ -25,8 +25,8 @@ const Tabs = ({ color, changeType }) => {
                 className={
                   "text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 1
-                    ? "text-white bg-" + color + "-500"
-                    : "text-" + color + "-500 bg-white")
+                    ? "text-white bg-pink-500"
+                    : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
                   // e.preventDefault();
@@ -44,8 +44,8 @@ const Tabs = ({ color, changeType }) => {
                 className={
                   "text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 2
-                    ? "text-white bg-" + color + "-500"
-                    : "text-" + color + "-500 bg-white")
+                    ? "text-white bg-pink-500"
+                    : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
                   changeType("dog");
@@ -64,8 +64,8 @@ const Tabs = ({ color, changeType }) => {
                 className={
                   "text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 3
-                    ? "text-white bg-" + color + "-500"
-                    : "text-" + color + "-500 bg-white")
+                    ? "text-white bg-pink-500"
+                    : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
                   changeType("cat");
@@ -89,7 +89,7 @@ const Tabs = ({ color, changeType }) => {
 export default function TabsRender({ changeType }) {
   return (
     <>
-      <Tabs color="pink" changeType={changeType} />
+      <Tabs changeType={changeType} />
     </>
   );
 }
