@@ -9,7 +9,7 @@
   h2 {
     @apply text-3xl;
   }
-  h2 {
+  h3 {
     @apply text-2xl;
   }
 }

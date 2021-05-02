@@ -3,21 +3,18 @@ import Home from "./Home";
 import Pet from "./Pet";
 import { useContext } from "react";
 import PetContext from "./PetContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 function Routes() {
-  const { pet, pets } = useContext(PetContext);
+  const { pet, getRandomPet } = useContext(PetContext);
 
   return (
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/dogs">
-        {pet && <Pet />}
-      </Route>
-      <Route exact path="/cats">
-        {pet && <Pet />}
-      </Route>
+      <Route path="/dogs">{pet ? <Pet /> : <LoadingSpinner />}</Route>
+      <Route path="/cats">{pet ? <Pet /> : <LoadingSpinner />}</Route>
       <Redirect to="/" />
     </Switch>
   );

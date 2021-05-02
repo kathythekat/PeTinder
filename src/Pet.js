@@ -14,7 +14,6 @@ function Pet() {
     );
     return charStr.slice(0, charStr.length - 2);
   }
-  console.log("CHAR STRING", getPetCharStr(pet));
 
   const petFeatures = [
     { label: "Breed", value: pet.breeds.primary },
@@ -36,18 +35,15 @@ function Pet() {
     { label: "Status", value: pet.status },
   ];
 
-  if (!pet || !type) {
-    return <div>Finding your new best furry friend...</div>;
-  }
   return (
     <>
       <div className="flex flex-col h-5/6 max-w-full items-center justify-center md:h-3/5">
         <h2 className="text-center">{pet.name}</h2>
-        <div className="flex flex-col justify-center items-center space-x-8 my-4 md:flex-row overflow-auto">
+        <div className="flex flex-col justify-center space-x-8 my-4 md:flex-row md:items-center overflow-auto">
           <div>
             {pet.photos[0] ? (
               <img
-                className="rounded-lg h-auto w-max"
+                className="rounded-lg h-auto w-max self-center"
                 alt={pet.name}
                 src={pet.photos[0]?.medium}
               />
@@ -55,19 +51,17 @@ function Pet() {
               <DefaultImg type={pet.type} />
             )}
           </div>
-          <div className="mt-4">
-            <ul className="list-none self-start">
+          <div className="mt-4 mx-0">
+            <ul>
               {petFeatures.map(({ label, value }, i) => (
-                <li key={i}>
+                <li key={i} className="break-words md:p-0.5">
                   <span className="text-black text-opacity-70">{label}</span>:{" "}
                   {value}
                 </li>
               ))}
               {pet.tags.length > 0 && (
                 <li>
-                  <span className="text-black text-opacity-70">
-                    Characteristics:
-                  </span>
+                  <span className="text-gray-500">Characteristics:</span>
                   {getPetCharStr(pet)}
                 </li>
               )}

@@ -7,6 +7,7 @@ import PetContext from "./PetContext";
 import getCats from "./helpers/get-cats";
 import getDogs from "./helpers/get-dogs";
 import generateRandom from "./helpers/generate-random";
+import LoadingSpinner from "./LoadingSpinner";
 require("dotenv").config();
 
 function App() {
@@ -38,7 +39,10 @@ function App() {
     if (type === "cat") setPet(generateRandom(cats));
   }
 
-  if (!pet && type) getRandomPet(type);
+  if (!pet && type) {
+    getRandomPet(type);
+    return <LoadingSpinner />;
+  }
 
   function changeType(clickedTab) {
     setType(clickedTab);
