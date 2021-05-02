@@ -5,7 +5,7 @@ import PetContext from "./PetContext";
 require("dotenv").config();
 
 function Pet() {
-  const { pet, pets, type } = useContext(PetContext);
+  const { pet } = useContext(PetContext);
 
   function getPetCharStr(pet) {
     const charStr = pet.tags?.reduce(

@@ -16,6 +16,7 @@ function App() {
   const [dogs, setDogs] = useState(null);
   const [pet, setPet] = useState(null);
 
+  // eslint-disable-next-line
   useEffect(() => {
     async function fetchCatsFromApi() {
       const petsData = await getCats();

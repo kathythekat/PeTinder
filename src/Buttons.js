@@ -6,7 +6,7 @@ function Buttons() {
   return (
     <div className="flex justify-center space-x-28">
       <div className="">
-        <a href={pet.url} target="_blank">
+        <a href={pet.url} target="_blank" rel="noreferrer">
           <button className="border border-pink-400 text-pink-400 p-2 rounded-lg hover:bg-pink-400 hover:text-white focus:outline-none">
             Find out more
           </button>

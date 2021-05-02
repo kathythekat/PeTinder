@@ -6,7 +6,11 @@ const CAT =
 const DefaultImg = ({ type }) => {
   return (
     <div className="flex flex-col items-center">
-      <img className="w-40 h-auto" src={type === "Dog" ? DOG : CAT} />
+      <img
+        className="w-40 h-auto"
+        alt="default"
+        src={type === "Dog" ? DOG : CAT}
+      />
       <p>Photo unavailable</p>
     </div>
   );

@@ -6,7 +6,7 @@ import PetContext from "./PetContext";
 import LoadingSpinner from "./LoadingSpinner";
 
 function Routes() {
-  const { pet, getRandomPet } = useContext(PetContext);
+  const { pet } = useContext(PetContext);
 
   return (
     <Switch>
