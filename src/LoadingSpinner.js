@@ -12,9 +12,11 @@ const spinIcon = (
 );
 function LoadingSpinner() {
   return (
-    <div className="flex flex-col items-center justify-center h-1/2">
-      {spinIcon}
-      <h3 className="my-4 lg:my-8">Searching for your best furriend...</h3>
+    <div className="h-screen flex flex-col items-center justify-center">
+      <div className="flex flex-col m-auto items-center">
+        <h3 className="p-2 text-center">Searching for your best furriend...</h3>
+        {spinIcon}
+      </div>
     </div>
   );
 }
