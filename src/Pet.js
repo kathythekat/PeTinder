@@ -68,8 +68,8 @@ function Pet() {
             </ul>
           </div>
         </div>
-        <Buttons />
       </div>
+      <Buttons />
     </>
   );
 }
