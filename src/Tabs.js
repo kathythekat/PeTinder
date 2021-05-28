@@ -29,7 +29,6 @@ const Tabs = ({ changeType }) => {
                     : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
-                  // e.preventDefault();
                   setOpenTab(1);
                 }}
                 data-toggle="tab"

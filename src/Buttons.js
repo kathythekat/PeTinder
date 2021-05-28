@@ -7,7 +7,7 @@ function Buttons() {
     <div className="flex justify-center space-x-28 pb-2">
       <div className="">
         <a href={pet.url} target="_blank" rel="noreferrer">
-          <button className="border border-pink-400 text-pink-400 p-2 rounded-lg hover:bg-pink-400 hover:text-white focus:outline-none">
+          <button className="border border-pink-400 text-pink-400 p-2 rounded-lg hover:bg-pink-500 hover:text-white focus:outline-none">
             Find Out More
           </button>
         </a>
@@ -15,7 +15,7 @@ function Buttons() {
       <div className="">
         <button
           onClick={() => getRandomPet(type)}
-          className="bg-pink-400 text-white p-2 rounded-lg md:hover:opacity-50 focus:outline-none"
+          className="bg-pink-400 text-white p-2 rounded-lg lg:hover:bg-pink-500 focus:outline-none"
         >
           Next Pet
         </button>

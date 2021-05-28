@@ -2,10 +2,15 @@ import DefaultImg from "./DefaultImg";
 import Buttons from "./Buttons";
 import { useContext } from "react";
 import PetContext from "./PetContext";
+import { useMediaQuery } from "react-responsive";
 require("dotenv").config();
 
 function Pet() {
   const { pet } = useContext(PetContext);
+  const isLargeScreen = useMediaQuery({
+    query: "(min-device-width: 1224px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   function getPetCharStr(pet) {
     const charStr = pet.tags?.reduce(
@@ -37,8 +42,8 @@ function Pet() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-full lg:h-3/4">
-        <h2 className="text-center">{pet.name}</h2>
+      <div className="flex flex-col items-center justify-center h-5/6 lg:h-4/5">
+        <h2 className="text-center lg:mt-">{pet.name}</h2>
         <div className="flex flex-col justify-center h-4/5 space-x-8 my-4 lg:flex-row items-center overflow-auto">
           <div>
             {pet.photos[0] ? (
@@ -68,8 +73,9 @@ function Pet() {
             </ul>
           </div>
         </div>
-        <Buttons />
+        {isLargeScreen && <Buttons />}
       </div>
+      {isTabletOrMobile && <Buttons />}
     </>
   );
 }

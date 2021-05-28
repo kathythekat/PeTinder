@@ -14,7 +14,9 @@ function App() {
   const [type, setType] = useState(null);
   const [cats, setCats] = useState(null);
   const [dogs, setDogs] = useState(null);
-  const [pet, setPet] = useState(null);
+  const [pet, setPet] = useState(
+    JSON.parse(localStorage.getItem("pet")) || null
+  );
 
   useEffect(() => {
     async function fetchCatsFromApi() {
@@ -30,17 +32,25 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  console.log("CATS ARRAY", cats);
-  console.log("DOGS ARRAY", dogs);
-  console.log("PET", pet);
-  console.log("TYPE", type);
+  // console.log("CATS ARRAY", cats);
+  // console.log("DOGS ARRAY", dogs);
+  // console.log("PET", pet);
+  // console.log("TYPE", type);
 
   function getRandomPet(type) {
-    if (type === "dog" && dogs) setPet(generateRandom(dogs));
-    if (type === "cat" && cats) setPet(generateRandom(cats));
+    if (type === "dog" && dogs) {
+      const dogData = generateRandom(dogs);
+      localStorage.setItem("pet", JSON.stringify(dogData));
+      setPet(dogData);
+    } else if (type === "cat" && cats) {
+      const catData = generateRandom(cats);
+      localStorage.setItem("pet", JSON.stringify(catData));
+      setPet(catData);
+    }
   }
 
   function changeType(clickedTab) {
+    localStorage.setItem("petType", clickedTab);
     setType(clickedTab);
   }
   if (!dogs || !cats) {
