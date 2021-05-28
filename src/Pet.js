@@ -42,8 +42,8 @@ function Pet() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-5/6 lg:h-4/5">
-        <h2 className="text-center lg:mt-">{pet.name}</h2>
+      <div className="flex flex-col items-center justify-center h-4/5">
+        <h2 className="text-center lg:mt-4">{pet.name}</h2>
         <div className="flex flex-col justify-center h-4/5 space-x-8 my-4 lg:flex-row items-center overflow-auto">
           <div>
             {pet.photos[0] ? (
