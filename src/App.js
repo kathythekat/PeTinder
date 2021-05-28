@@ -11,7 +11,7 @@ import LoadingSpinner from "./LoadingSpinner";
 require("dotenv").config();
 
 function App() {
-  const [type, setType] = useState(null);
+  const [type, setType] = useState(localStorage.getItem("petType") || null);
   const [cats, setCats] = useState(null);
   const [dogs, setDogs] = useState(null);
   const [pet, setPet] = useState(
@@ -32,10 +32,10 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  // console.log("CATS ARRAY", cats);
-  // console.log("DOGS ARRAY", dogs);
-  // console.log("PET", pet);
-  // console.log("TYPE", type);
+  console.log("CATS ARRAY", cats);
+  console.log("DOGS ARRAY", dogs);
+  console.log("PET", pet);
+  console.log("TYPE", type);
 
   function getRandomPet(type) {
     if (type === "dog" && dogs) {

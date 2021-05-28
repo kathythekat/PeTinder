@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog, faCat, faHome } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,7 @@ const catIcon = <FontAwesomeIcon icon={faCat} size="2x" />;
 const homeIcon = <FontAwesomeIcon icon={faHome} size="2x" />;
 
 const Tabs = ({ changeType }) => {
-  const [openTab, setOpenTab] = React.useState(1);
+  const [openTab, setOpenTab] = useState(+localStorage.getItem("tab") || 1);
   const { getRandomPet } = useContext(PetContext);
 
   return (
@@ -29,6 +29,7 @@ const Tabs = ({ changeType }) => {
                     : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
+                  localStorage.setItem("tab", 1);
                   setOpenTab(1);
                 }}
                 data-toggle="tab"
@@ -47,6 +48,7 @@ const Tabs = ({ changeType }) => {
                     : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
+                  localStorage.setItem("tab", 2);
                   changeType("dog");
                   getRandomPet("dog");
                   setOpenTab(2);
@@ -67,6 +69,7 @@ const Tabs = ({ changeType }) => {
                     : "text-pink-500 bg-white")
                 }
                 onClick={(e) => {
+                  localStorage.setItem("tab", 3);
                   changeType("cat");
                   getRandomPet("cat");
                   setOpenTab(3);
