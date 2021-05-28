@@ -22,3 +22,4 @@ Resources:
 - <a href="https://fontawesome.com/">Font Awesome</a>
 - <a href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation">Tailwind Starter Kit</a>
 - <a href="https://gomakethings.com/how-to-make-multiple-fetch-calls-with-the-same-oauth-token-in-vanilla-js">Renewing Oauth token</a>
+- Dog image by <a href="https://unsplash.com/photos/AoqgGAqrLpU">Camylla Battani</a>
