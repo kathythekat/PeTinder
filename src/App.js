@@ -11,11 +11,11 @@ import LoadingSpinner from "./LoadingSpinner";
 require("dotenv").config();
 
 function App() {
-  const [type, setType] = useState(localStorage.getItem("petType") || null);
+  const [type, setType] = useState(sessionStorage.getItem("petType") || null);
   const [cats, setCats] = useState(null);
   const [dogs, setDogs] = useState(null);
   const [pet, setPet] = useState(
-    JSON.parse(localStorage.getItem("pet")) || null
+    JSON.parse(sessionStorage.getItem("pet")) || null
   );
 
   useEffect(() => {
@@ -40,17 +40,17 @@ function App() {
   function getRandomPet(type) {
     if (type === "dog" && dogs) {
       const dogData = generateRandom(dogs);
-      localStorage.setItem("pet", JSON.stringify(dogData));
+      sessionStorage.setItem("pet", JSON.stringify(dogData));
       setPet(dogData);
     } else if (type === "cat" && cats) {
       const catData = generateRandom(cats);
-      localStorage.setItem("pet", JSON.stringify(catData));
+      sessionStorage.setItem("pet", JSON.stringify(catData));
       setPet(catData);
     }
   }
 
   function changeType(clickedTab) {
-    localStorage.setItem("petType", clickedTab);
+    sessionStorage.setItem("petType", clickedTab);
     setType(clickedTab);
   }
   if (!dogs || !cats) {
