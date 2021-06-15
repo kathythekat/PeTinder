@@ -32,7 +32,7 @@ function App() {
     const interval = setInterval(() => {
       fetchDogsFromApi();
       fetchCatsFromApi();
-    }, 60000);
+    }, 180000);
     return () => clearInterval(interval);
     // eslint-disable-next-line
   }, []);

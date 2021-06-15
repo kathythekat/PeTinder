@@ -8,7 +8,7 @@ export default async function getDogs() {
   const token = await getToken();
   const randomPage = generateRandomPage();
   const resp = await axios.get(
-    `${API_URL}/animals?type=dog&page=${randomPage}`,
+    `${API_URL}/animals?type=dog&limit=50&page=${randomPage}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

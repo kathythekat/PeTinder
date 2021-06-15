@@ -8,7 +8,7 @@ export default async function getCats() {
   const token = await getToken();
   const randomPage = generateRandomPage();
   const resp = await axios.get(
-    `${API_URL}/animals?type=cat&page=${randomPage}`,
+    `${API_URL}/animals?type=cat&limit=50&page=${randomPage}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
