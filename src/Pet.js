@@ -8,9 +8,9 @@ require("dotenv").config();
 function Pet() {
   const { pet } = useContext(PetContext);
   const isLargeScreen = useMediaQuery({
-    query: "(min-device-width: 1224px)",
+    query: "(min-device-width: 1025px)",
   });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   function getPetCharStr(pet) {
     const charStr = pet.tags?.reduce(
@@ -64,7 +64,7 @@ function Pet() {
                   {value}
                 </li>
               ))}
-              {pet.tags.length > 0 && (
+              {pet.tags.length && (
                 <li>
                   <span className="text-gray-500">Characteristics:</span>
                   {getPetCharStr(pet)}

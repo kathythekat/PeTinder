@@ -27,15 +27,20 @@ function App() {
       const petsData = await getDogs();
       setDogs(petsData);
     }
-    if (!cats) fetchCatsFromApi();
-    if (!dogs) fetchDogsFromApi();
+    fetchDogsFromApi();
+    fetchCatsFromApi();
+    const interval = setInterval(() => {
+      fetchDogsFromApi();
+      fetchCatsFromApi();
+    }, 60000);
+    return () => clearInterval(interval);
     // eslint-disable-next-line
   }, []);
 
-  console.log("CATS ARRAY", cats);
-  console.log("DOGS ARRAY", dogs);
-  console.log("PET", pet);
-  console.log("TYPE", type);
+  // console.log("CATS ARRAY", cats);
+  // console.log("DOGS ARRAY", dogs);
+  // console.log("PET", pet);
+  // console.log("TYPE", type);
 
   function getRandomPet(type) {
     if (type === "dog" && dogs) {
