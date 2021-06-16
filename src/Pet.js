@@ -8,9 +8,11 @@ require("dotenv").config();
 function Pet() {
   const { pet } = useContext(PetContext);
   const isLargeScreen = useMediaQuery({
-    query: "(min-device-width: 1025px)",
+    query: "(min-width: 1224px)",
   });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isTabletOrMobile = useMediaQuery({
+    query: "(max-width: 1224px)",
+  });
 
   function getPetCharStr(pet) {
     const charStr = pet.tags?.reduce(
@@ -42,9 +44,9 @@ function Pet() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-4/5">
-        <h2 className="text-center lg:mt-4">{pet.name}</h2>
-        <div className="flex flex-col justify-center h-4/5 space-x-8 my-4 lg:flex-row items-center overflow-auto">
+      <h2 className="text-center lg:mt-4">{pet.name}</h2>
+      <div className="flex flex-col items-center justify-center h-4/5 overflow-y-auto">
+        <div className="flex flex-col justify-center h-4/5 space-x-8 my-4 lg:flex-row items-center">
           <div>
             {pet.photos[0] ? (
               <img
@@ -64,9 +66,9 @@ function Pet() {
                   {value}
                 </li>
               ))}
-              {pet.tags.length && (
+              {pet.tags.length > 0 && (
                 <li>
-                  <span className="text-gray-500">Characteristics:</span>
+                  <span className="text-gray-500 p-0.5">Characteristics:</span>
                   {getPetCharStr(pet)}
                 </li>
               )}
