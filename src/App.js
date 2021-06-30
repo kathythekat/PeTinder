@@ -20,12 +20,12 @@ function App() {
 
   useEffect(() => {
     async function fetchCatsFromApi() {
-      const petsData = await getCats();
-      setCats(petsData);
+      const catsArr = await getCats();
+      setCats(catsArr);
     }
     async function fetchDogsFromApi() {
-      const petsData = await getDogs();
-      setDogs(petsData);
+      const dogsArr = await getDogs();
+      setDogs(dogsArr);
     }
     fetchDogsFromApi();
     fetchCatsFromApi();

@@ -52,7 +52,7 @@ function Pet() {
               <img
                 className="rounded-lg h-auto w-max self-center"
                 alt={pet.name}
-                src={pet.photos[0]?.medium}
+                src={pet.photos[0]?.medium || pet.photos[0].small}
               />
             ) : (
               <DefaultImg type={pet.type} />
